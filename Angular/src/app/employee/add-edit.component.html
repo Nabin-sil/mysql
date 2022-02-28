@@ -1,0 +1,57 @@
+﻿<h1 *ngIf="isAddMode">Add Employee</h1>
+<h1 *ngIf="!isAddMode">Edit Employee</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col-md-6 col-sm-12">
+            <label for="fullname">Full Name</label>
+             <input type="text" formControlName="fullname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }" />
+            <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                <div *ngIf="f.fullname.errors.required">Full name is required</div>
+            </div> 
+            
+        </div>
+
+        <div class="form-group col">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6 col-sm-12">
+            <label for="position">Position</label>
+            <input type="position" formControlName="position" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.position.errors }" />
+            <div *ngIf="submitted && f.position.errors" class="invalid-feedback">
+                <div *ngIf="f.position.errors.required">Position is required</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6 col-sm-12">
+            <label for="salary">Salary</label>
+            <input type="" formControlName="salary" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.salary.errors }" />
+            <div *ngIf="submitted && f.salary.errors" class="invalid-feedback">
+                <div *ngIf="f.salary.errors.required">Salary is required</div>
+            </div>
+        </div>
+
+
+        
+   </div>
+
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/employees" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+
+
+
+
